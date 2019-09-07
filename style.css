@@ -1,5 +1,8 @@
+html {
+    scroll-behavior: smooth;
+}
 body{
-    background: #CBCCCE;
+    background: rgb(117, 157, 170);
     font-family: "Nunito", sans-serif;
 }
 .blurb h2{
@@ -22,29 +25,37 @@ body{
     font-weight: 100;
 }
 #mainNavbar .nav-link{
-    color: white;
+    color:#212324;
 }
 #mainNavbar .nav-link:hover{
-    color: #ea1c2c;
+    color: #db1e2e;
 }
 #mainNavbar .navbar-brand{
     color: #ea1c2c;
     font-size: 1.5rem;
 }
-/* #headingGroup span{
-    color: #ea1c2c;
-}
-#headingGroup h1{
-    font-weight: 100;
-    font-size: 4rem;
-} */
 .navbar.scrolled{
-    background: rgb(222,192,222);
+    background: rgb(190, 159, 190);
     transition: background 500ms;
 }
-@media(max-width:1200px){
-    #headingGroup h1{
-        font-weight: 100;
-        font-size: 1.5rem;
-    }
+section{
+    background-color: #414647;
+    border-radius: 15%;
+}
+hr{
+    width: 50%;
+    border: 1px solid #ea1c2c;
+}
+#lp{
+    max-width:100%;
+    height:auto;
+}
+.bottom-right{
+    position: absolute;
+    top: 30%;
+    right: 10%;
+    font-size-adjust: 0.58;
+}
+h1{
+    color: #f498b8;
 }

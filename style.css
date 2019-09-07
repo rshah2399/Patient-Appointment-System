@@ -59,3 +59,18 @@ hr{
 h1{
     color: #f498b8;
 }
+fieldset{
+    border-spacing: 10px;
+}
+label{
+    color: #f498b8;
+}
+input{
+    border-radius:25px;
+}
+#att{
+    color: red;
+}
+span{
+    color: #db1e2e;
+}

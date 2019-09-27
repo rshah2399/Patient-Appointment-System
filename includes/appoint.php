@@ -24,7 +24,7 @@
       <div class="modal-header text-center">
         <h4 class="modal-title w-100 font-weight-bold">Book An Appointment</h4>
       </div>
-      <form name="signup" method="post">
+      <form name="appoint" method="post">
         <div class="modal-body mx-3">
           <div class="md-form mb-3">
             <label data-error="wrong" data-success="right" for="orangeForm-name" required>Full Name: </label>

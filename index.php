@@ -36,6 +36,7 @@
                 <?php
                 session_start();
                 if($_SESSION['login']){?>
+                    <li class="prnt"><a href="book-history.php">My Booking History</a></li>
                     <li class="tol"><strong>Welcome :</strong></li>
                     <li class="sig">
                        <?php echo htmlentities($_SESSION['login']);?>
@@ -65,9 +66,6 @@
                     <h2 style="color: brown"><i class="fas fa-quote-left"></i> WE CARE ABOUT YOUR HEALTH <i class="fas fa-quote-right"></i></h2>
                     <button type="button" class="btn btn-outline-success" style="color:#595959">
                         <a href="#" data-toggle="modal" data-target="#modalRegisterForm3"><strong>Book Appointment</strong></a>
-                    </button>
-                    <button type="button" class="btn btn-outline-success" style="color:#595959">
-                        <a href="#" data-toggle="modal" data-target="#modalRegisterForm4"><strong>Add Report</strong></a>
                     </button>
                 </div>
             </div>

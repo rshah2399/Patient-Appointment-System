@@ -1,16 +1,17 @@
 <?php
 include 'config.php';
 if(isset($_POST['signin'])){
-$email=$_POST['email'];
-$password=$_POST['password'];
-$sql ="SELECT email,password FROM users WHERE email='$email' and password='$password'";
-$result = mysqli_query($con, $sql);
-if(mysqli_num_rows($result) == 1){
-$_SESSION['login']=$_POST['email'];
-}
-else{
-echo "<script>alert('Invalid Details');</script>";
-}
+  $email=$_POST['email'];
+  $password=$_POST['password'];
+  $sql ="SELECT email,password FROM users WHERE email='$email' and password='$password'";
+  $result = mysqli_query($con, $sql);
+  if(mysqli_num_rows($result) == 1){
+    session_start();
+    $_SESSION['login']=$_POST['email'];
+  }
+  else{
+    echo "<script>alert('Invalid Details');</script>";
+  }
 }
 ?>
 
@@ -32,7 +33,7 @@ echo "<script>alert('Invalid Details');</script>";
           </div>
       	</div>
       	<div class="modal-footer d-flex justify-content-center">
-        	<input type="submit" name="signin" id="submit" class="btn btn-dark" value="SIGN IN">
+        	<input type="submit" name="signin" id="signin" class="btn btn-dark" value="SIGN IN">
     		</div>
   		</form>
   	</div>

@@ -27,8 +27,16 @@ include 'includes/config.php';
 					echo "Failed to connect to MySQL: " . mysqli_connect_error();
 				}
 
+				//$sql = "SELECT * FROM appointment";
+				$sql = "SELECT * FROM appointment WHERE email='$uemail'";
+
 				// Perform queries
-				$query = mysqli_query($con, "SELECT * FROM appointment WHERE email='$uemail'");
+				if ($con) {
+					$query = mysqli_query($con, $sql);
+					echo "db connection successful";
+				} else {
+					echo "dberror";
+				}
 
 				if (mysqli_num_rows($query)) {
 					foreach ($query as $result) {	?>

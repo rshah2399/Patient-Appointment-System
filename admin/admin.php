@@ -1,6 +1,3 @@
-<?php
-
-?>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -34,6 +31,8 @@
 
     <div id="weather-temp"></div>
 </div>
+
+
 <table border="1" width="100%">
     <tr align="center">
         <th>#</th>
@@ -47,22 +46,27 @@
     <?php
     session_start();
     error_reporting(0);
+    $uemail = $_SESSION['login'];
     $cnt = 1;
-    echo "ye chal";
-    if (isset($_POST['nameinput']) and isset($_POST['dateinput'])) {
-        echo "exec";
-        $name = $_POST['nameinput'];
-        $date = $_POST['dateinput'];
-        echo $name;
-        
-        // Check connection
-        if (mysqli_connect_errno()) {
-            echo "Failed to connect to MySQL: " . mysqli_connect_error();
-        }
-        $con = mysqli_connect("localhost", "root", "", "patient_system");
+    $con = mysqli_connect("localhost", "root", "", "patient_system");
+    // Check connection
+    if (mysqli_connect_errno()) {
+        echo "Failed to connect to MySQL: " . mysqli_connect_error();
+    }
 
-        $query = mysqli_query($con, "SELECT * FROM appointment WHERE name='$name' AND date='$date'");
-        echo $query;
+    $name = $_POST['nameinput'];
+    $date = $_POST['dateinput'];
+
+    //$sql = "SELECT * FROM appointment";
+    $sql = "SELECT * FROM appointment WHERE name='$name' AND date='$date'";
+
+    // Perform queries
+    if ($con) {
+        $query = mysqli_query($con, $sql);
+
+        echo "db connection successful";
+    } else {
+        echo "dberror";
     }
 
     if (mysqli_num_rows($query)) {

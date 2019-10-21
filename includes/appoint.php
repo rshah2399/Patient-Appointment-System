@@ -39,15 +39,15 @@ if (isset($_POST['appoint'])) {
             <label data-error="wrong" data-success="right" for="orangeForm-gender">Gender: </label>
 
             <div class="form-group" style="display: flex;">
-              <label for="orangeForm-gender">Male</label>
+              <label for="orangeForm-gender" class="black">Male</label>
               <input type="radio" id="orangeForm-gender" class="form-control d-inline-block validate" name="gender" value="male" checked>
             </div>
             <div class="form-group" style="display: flex;">
-              <label for="orangeForm-gender">Female</label>
+              <label for="orangeForm-gender" class="black">Female</label>
               <input type="radio" id="orangeForm-gender" class="form-control validate" name="gender" value="female">
             </div>
             <div class="form-group" style="display: flex;">
-              <label for="orangeForm-gender">Other</label>
+              <label for="orangeForm-gender"class="black">Other</label>
               <input type="radio" id="orangeForm-gender" class="form-control validate" name="gender" value="others">
             </div>
           </div>

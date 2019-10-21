@@ -6,12 +6,12 @@ body{
     font-family: "Nunito", sans-serif;
 }
 .blurb h2{
-    color: #ea1c2c;
-    font-weight: 100;
+    color: #2679bd;
+    font-weight: 150;
     font-size: 2.5rem;
 }
 .blurb p{
-    color: #f498b8;
+    color: black;
     font-weight: 100;
     font-size: 1.125rem;
     line-height: 2;
@@ -25,26 +25,26 @@ body{
     font-weight: 100;
 }
 #mainNavbar .nav-link{
-    color:#212324;
+    color: black;
 }
 #mainNavbar .nav-link:hover{
-    color: #db1e2e;
+    color: #064980;
 }
 #mainNavbar .navbar-brand{
-    color: #ea1c2c;
+    color: #064980;
     font-size: 1.5rem;
 }
 .navbar.scrolled{
-    background: rgb(190, 159, 190);
+    background: rgb(201, 201, 218);
     transition: background 500ms;
 }
-section{
-    background-color: #414647;
-    border-radius: 15%;
+.pg-end{
+    width: 100%;
+    border: 2px solid #323f64;
 }
 hr{
     width: 50%;
-    border: 1px solid #ea1c2c;
+    border: 1px solid #141313;
 }
 #lp{
     max-width:100%;
@@ -57,7 +57,7 @@ hr{
     font-size-adjust: 0.58;
 }
 h1{
-    color: #f498b8;
+    color: #395b83;
 }
 fieldset{
     border-spacing: 10px;
@@ -73,4 +73,11 @@ input{
 }
 span{
     color: #db1e2e;
+}
+.black{
+    color: black;
+}
+.im{
+    height: 400px;
+    width: 500px;
 }

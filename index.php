@@ -73,6 +73,7 @@
     </div>
 
     <section class="container-fluid px-0">
+        <hr class="pg-end">
         <p>
             <h1 id="one" class="d-none d-lg-block mt-5 text-center">Home</h1>
         </p>
@@ -89,7 +90,8 @@
             <div class="col-md-6 content">
                 <!-- <img src="img/moc3.jfif" alt="" class="img-fluid">             -->
             </div>
-        </div>     
+        </div> 
+        <hr>    
         <div class="row align-items-center">
             <div class="col-md-6 order-2 order-md-1 content">
                 <!-- <img src="img/moc1.jfif" alt="" class="img-fluid">             -->
@@ -103,6 +105,7 @@
                 </div>
             </div>
         </div>
+        <hr>
         <div class="row align-items-center">
             <div class="col-md-6 text-center">
                 <div class="row justify-content-center">
@@ -118,6 +121,7 @@
         </div>
     </section>
     <section class="container-fluid px-0">
+            <hr class="pg-end">        
             <p>
                 <h1 id="two" class="d-none d-lg-block mt-5 text-center">About Us</h1>
             </p>
@@ -132,12 +136,13 @@
                     </div>
                 </div>
                 <div class="col-md-6 content">
-                    <img src="img/book.png" alt="" height="500px" width="500px" class="img-fluid">            
+                    <img src="img/book.png" class="im" alt="" height="500px" width="500px" class="img-fluid">            
                 </div>
-            </div>     
+            </div>   
+            <hr>  
             <div class="row align-items-center">
                 <div class="col-md-6 order-2 order-md-1 content">
-                    <img src="img/recp.png" alt="" height="500px" width="500px" class="img-fluid">            
+                    <img src="img/recp.png" class="im" alt="" height="500px" width="500px" class="img-fluid">            
                 </div>
                 <div class="col-md-6 text-center order-1 order-md-2">
                     <div class="row justify-content-center">
@@ -148,6 +153,7 @@
                     </div>
                 </div>
             </div>
+            <hr>
             <div class="row align-items-center">
                 <div class="col-md-6 text-center">
                     <div class="row justify-content-center">
@@ -158,22 +164,25 @@
                     </div>
                 </div>
                 <div class="col-md-6 content">
-                    <img src="img/better.jpg" alt="" height="500px" width="500px" class="img-fluid">            
+                    <img src="img/better.jpg" class="im" alt="" height="500px" width="500px" class="img-fluid">            
                 </div>
             </div>
         </section>    
         <section class="container-fluid px-0">
+            <hr class="pg-end">
             <p>
                 <h1 id="three" class="d-none d-lg-block mt-5 text-center">Contact Us</h1>
             </p>
             <hr>
-            <div class="text-center">
-                <h4 style="color:#f498b8">Toll Free Number : 123-456789</h4>
-                <h4 style="color:#f498b8">Clinic Address: </h4>
-                <p>Flat No.103, 1st Floor, B,</p>
-                <p>Raj Niketan Building,</p>
-                <p>SV Rd, Santacruz West,</p>
-                <p>Mumbai, Maharashtra 400054</p>        
+            <div class="text-center blurb">
+                <h2>Toll Free Number : </h2>
+                <p class="lead">123-456789</p>
+                <hr>
+                <h2>Clinic Address: </h2>
+                <p class="lead">Flat No.103, 1st Floor, B,</p>
+                <p class="lead">Raj Niketan Building,</p>
+                <p class="lead">SV Rd, Santacruz West,</p>
+                <p class="lead">Mumbai, Maharashtra 400054</p>        
             </div>
         </section>
 

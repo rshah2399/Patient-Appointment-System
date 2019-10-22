@@ -15,6 +15,7 @@ include 'includes/config.php';
 					<th>Email</th>
 					<th>Appointment Date</th>
 					<th>Appointment Time</th>
+					<th>View Reports</th>
 				</tr>
 				<?php
 				session_start();
@@ -27,16 +28,8 @@ include 'includes/config.php';
 					echo "Failed to connect to MySQL: " . mysqli_connect_error();
 				}
 
-				//$sql = "SELECT * FROM appointment";
-				$sql = "SELECT * FROM appointment WHERE email='$uemail'";
-
 				// Perform queries
-				if ($con) {
-					$query = mysqli_query($con, $sql);
-					echo "db connection successful";
-				} else {
-					echo "dberror";
-				}
+				$query = mysqli_query($con, "SELECT * FROM appointment WHERE email='$uemail'");
 
 				if (mysqli_num_rows($query)) {
 					foreach ($query as $result) {	?>
@@ -48,6 +41,7 @@ include 'includes/config.php';
 							<td><?php echo htmlentities($result['email']); ?></td>
 							<td><?php echo htmlentities($result['date']); ?></td>
 							<td><?php echo htmlentities($result['time']); ?></td>
+							<td><?php echo htmlentities($result['report']); ?></td>
 						</tr>
 				<?php $cnt = $cnt + 1;
 					}

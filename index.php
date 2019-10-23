@@ -43,8 +43,8 @@ include 'includes/appoint.php';
                 } */
                 //echo "after admin";
                 if ($_SESSION['login']) { ?>
-                    <li class="prnt"><a href="book-history.php">My Booking History</a></li>
-                    <li class="tol"><strong>Welcome :</strong></li>
+                    <li><a class="book-hist" href="book-history.php">My Booking History</a></li>
+                    <li><strong>Welcome :</strong></li>
                     <li class="sig">
                         <?php echo htmlentities($_SESSION['login']); ?>
                     </li>

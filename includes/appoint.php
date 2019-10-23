@@ -33,7 +33,7 @@ if (isset($_POST['appoint'])) {
           </div>
           <div class="form-group mb-3">
             <label data-error="wrong" data-success="right" for="orangeForm-text">Mobile Number: </label>
-            <input type="text" id="orangeForm-text" class="form-control validate" name="mobile" required="">
+            <input type="text" id="orangeForm-text" class="form-control validate" pattern="[789][0-9]{9}" name="mobile" required="">
           </div>
           <div class="form-check mb-3">
             <label data-error="wrong" data-success="right" for="orangeForm-gender">Gender: </label>
@@ -47,7 +47,7 @@ if (isset($_POST['appoint'])) {
               <input type="radio" id="orangeForm-gender" class="form-control validate" name="gender" value="female">
             </div>
             <div class="form-group" style="display: flex;">
-              <label for="orangeForm-gender"class="black">Other</label>
+              <label for="orangeForm-gender" class="black">Other</label>
               <input type="radio" id="orangeForm-gender" class="form-control validate" name="gender" value="others">
             </div>
           </div>

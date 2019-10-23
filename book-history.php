@@ -1,12 +1,16 @@
 <?php
 
 include 'includes/config.php';
+include 'includes/links.php';
 ?>
-<div class="privacy">
+<div style="background-color='white'" class="privacy">
 	<div class="container">
+
+		<a href="/wdl_project/"><button class="btn btn-primary">BACK TO HOME</button></a>
+
 		<h3>My Booking History</h3>
 		<p>
-			<table border="1" width="100%">
+			<table class="table" width="100%">
 				<tr align="center">
 					<th>#</th>
 					<th>Name</th>
@@ -28,6 +32,7 @@ include 'includes/config.php';
 					echo "Failed to connect to MySQL: " . mysqli_connect_error();
 				}
 
+
 				// Perform queries
 				$query = mysqli_query($con, "SELECT * FROM appointment WHERE email='$uemail'");
 
@@ -41,7 +46,7 @@ include 'includes/config.php';
 							<td><?php echo htmlentities($result['email']); ?></td>
 							<td><?php echo htmlentities($result['date']); ?></td>
 							<td><?php echo htmlentities($result['time']); ?></td>
-							<td><?php echo htmlentities($result['report']); ?></td>
+							<td><?php echo "<a target='_blank' href='" . htmlentities($result['report']) . "'/>view report</a>"; ?></td>
 						</tr>
 				<?php $cnt = $cnt + 1;
 					}

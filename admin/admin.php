@@ -2,10 +2,6 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 
-<?php
-
-if (isset($_POST['add'])) { }
-?>
 <div class="container mt-3">
     <div class="row">
         <div class="col-10">
@@ -37,7 +33,7 @@ if (isset($_POST['add'])) { }
 </div>
 
 
-<table border="1" width="100%">
+<table class="table" width="100%">
     <tr align="center">
         <th>#</th>
         <th>Appointment ID</th>
@@ -68,17 +64,12 @@ if (isset($_POST['add'])) { }
     $sql = "SELECT * FROM appointment WHERE name='$name' AND date='$date'";
     if (empty($_POST['nameinput'])) {
         $sql = "SELECT * FROM appointment WHERE date='$date'";
-        echo "first";
     }
 
 
     if (empty($_POST['dateinput'])) {
         $sql = "SELECT * FROM appointment WHERE name='$name'";
-        echo "second";
     }
-
-    echo "after";
-
 
     // Perform queries
     if ($con) {
@@ -87,37 +78,36 @@ if (isset($_POST['add'])) { }
     } else {
         echo "dberror";
     }
+
     if (isset($_POST['rep'])) {
         echo $_FILES["report"];
 
         $report = $_FILES["report"]["name"];
 
         // Check if teacher has requested to create a post
-        $fileExt = explode('.', $name);
+        $fileExt = explode('.', $report);
         $fileActualExt = strtolower(end($fileExt));
-        $fileNameNew = uniqid()  . $fileActualExt;
+        //$fileNameNew = $report . "."  . $fileActualExt;
+        $fileNameNew = $report;
         $hostPath = "C:/xampp/htdocs/";
         $filePath = "wdl_project/uploads/" . $fileNameNew;
-        $tmpName = $_FILES["report"];
+        $tmpName = $_FILES["report"]["tmp_name"];
         $fileDestination = $hostPath . $filePath;
+
         echo $fileDestination;
 
         move_uploaded_file($tmpName, $fileDestination);
 
-        echo $report;
-        $quereport = "INSERT INTO appointment (report) VALUES('$result')";
-        if (mysqli_query($con, $quereport)) {
-            echo "asd";
-        } else {
-            echo "sa>";
-        }
+        $saveUrl = "uploads/" . $fileNameNew;
 
+        echo $report;
         $name = $_POST['nameinput'];
         $date = $_POST['dateinput'];
-        $report = $_POST['report'];
         $aid = $_POST['aid'];
-        $quereport = "UPDATE appointment set report = '$report' where a_id='$aid'";
-        if (mysqli_query($con, $quereport)) { } else { }
+        $quereport = "UPDATE appointment set report = '$saveUrl' where a_id='$aid'";
+        if (mysqli_query($con, $quereport)) {
+            echo "success";
+        } else { }
     }
 
     if (mysqli_num_rows($query)) {
@@ -131,18 +121,28 @@ if (isset($_POST['add'])) { }
                 <td><?php echo htmlentities($result['email']); ?></td>
                 <td><?php echo htmlentities($result['date']); ?></td>
                 <td><?php echo htmlentities($result['time']); ?></td>
-                <td><?php echo htmlentities($result['report']); ?></td>
+                <td><?php echo "<a target='_blank' href='../" . htmlentities($result['report']) . "'/>view report</a>"; ?></td>
             </tr>
     <?php $cnt = $cnt + 1;
         }
     } ?>
 </table>
 <br>
-<form name="rep" method="post" enctype="multipart/form-data">
-    <p>
-        <label for="aid">Enter Appointment Id :</label>
-        <input type="number" name="aid" id="aid"><br>
-    </p>
-    <input name="report" id="report" type="file" placeholder="select report">
-    <button class="btn btn-success" name="rep" id="rep">Add Report</button>
-</form>
+<div class="container">
+    <div class="card" style="width: 400px;">
+        <div class="card-header">
+            <h3>Add report:</h3>
+        </div>
+        <div class="card-body">
+
+            <form name="rep" method="post" enctype="multipart/form-data">
+                <p>
+                    <label for="aid">Enter Appointment Id :</label><br>
+                    <input type="number" name="aid" id="aid"><br>
+                </p>
+                <input name="report" id="report" type="file" placeholder="select report"><br><br>
+                <button class="btn btn-success" name="rep" id="rep">Add Report</button>
+            </form>
+        </div>
+    </div>
+</div>

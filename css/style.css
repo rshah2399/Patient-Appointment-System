@@ -1,83 +1,89 @@
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
-body{
-    background: rgb(117, 157, 170);
-    font-family: "Nunito", sans-serif;
+
+.book-hist{
+    text-decoration: none;
+    color: white;
+    padding-right: 10px;
 }
-.blurb h2{
-    color: #2679bd;
-    font-weight: 150;
-    font-size: 2.5rem;
+
+body {
+  font-family: "Nunito", sans-serif;
 }
-.blurb p{
-    color: black;
-    font-weight: 100;
-    font-size: 1.125rem;
-    line-height: 2;
+.blurb h2 {
+  color: #2679bd;
+  font-weight: 150;
+  font-size: 2.5rem;
 }
-.content{
-    margin-top: 100px;
-    margin-bottom: 100px;
+.blurb p {
+  color: black;
+  font-weight: 100;
+  font-size: 1.125rem;
+  line-height: 2;
 }
-#mainNavbar{
-    font-size: 1.5rem;
-    font-weight: 100;
+.content {
+  margin-top: 100px;
+  margin-bottom: 100px;
 }
-#mainNavbar .nav-link{
-    color: black;
+#mainNavbar {
+  font-weight: 100;
+  font-size: 1.1rem;
 }
-#mainNavbar .nav-link:hover{
-    color: #064980;
+#mainNavbar .nav-link {
+  color: black;
 }
-#mainNavbar .navbar-brand{
-    color: #064980;
-    font-size: 1.5rem;
+#mainNavbar .nav-link:hover {
+  color: #064980;
 }
-.navbar.scrolled{
-    background: rgb(201, 201, 218);
-    transition: background 500ms;
+#mainNavbar .navbar-brand {
+  color: #064980;
+  font-size: 1.5rem;
 }
-.pg-end{
-    width: 100%;
-    border: 2px solid #323f64;
+.navbar.scrolled {
+  background: rgb(201, 201, 218);
+  transition: background 500ms;
 }
-hr{
-    width: 50%;
-    border: 1px solid #141313;
+.pg-end {
+  width: 100%;
+  border: 2px solid #323f64;
 }
-#lp{
-    max-width:100%;
-    height:auto;
+hr {
+  width: 50%;
+  border: 1px solid #141313;
 }
-.bottom-right{
-    position: absolute;
-    top: 30%;
-    right: 10%;
-    font-size-adjust: 0.58;
+#lp {
+  max-width: 100%;
+  height: auto;
 }
-h1{
-    color: #395b83;
+.bottom-right {
+  position: absolute;
+  top: 30%;
+  right: 10%;
+  font-size-adjust: 0.58;
 }
-fieldset{
-    border-spacing: 10px;
+h1 {
+  color: #395b83;
 }
-label{
-    color: #f498b8;
+fieldset {
+  border-spacing: 10px;
 }
-input{
-    border-radius:15px;
+label {
+  color: #f498b8;
 }
-#att{
-    color: red;
+input {
+  border-radius: 15px;
 }
-span{
-    color: #db1e2e;
+#att {
+  color: red;
 }
-.black{
-    color: black;
+span {
+  color: #db1e2e;
 }
-.im{
-    height: 400px;
-    width: 500px;
+.black {
+  color: black;
+}
+.im {
+  height: 400px;
+  width: 500px;
 }

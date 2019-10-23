@@ -4,16 +4,7 @@
 
 <?php
 
-if (isset($_POST['add'])) {
-    $report = $_POST['report'];
-    echo $report;
-    $quereport = "INSERT INTO appointment (report) VALUES('$result')";
-    if (mysqli_query($con, $quereport)) {
-        echo "<script>alert('Report Added successfully');</script>";
-    } else {
-        echo "<script>alert('Failed to add report');</script>";
-    }
-}
+if (isset($_POST['add'])) { }
 ?>
 <div class="container mt-3">
     <div class="row">
@@ -97,16 +88,36 @@ if (isset($_POST['add'])) {
         echo "dberror";
     }
     if (isset($_POST['rep'])) {
+        echo $_FILES["report"];
+
+        $report = $_FILES["report"]["name"];
+
+        // Check if teacher has requested to create a post
+        $fileExt = explode('.', $name);
+        $fileActualExt = strtolower(end($fileExt));
+        $fileNameNew = uniqid()  . $fileActualExt;
+        $hostPath = "C:/xampp/htdocs/";
+        $filePath = "wdl_project/uploads/" . $fileNameNew;
+        $tmpName = $_FILES["report"];
+        $fileDestination = $hostPath . $filePath;
+        echo $fileDestination;
+
+        move_uploaded_file($tmpName, $fileDestination);
+
+        echo $report;
+        $quereport = "INSERT INTO appointment (report) VALUES('$result')";
+        if (mysqli_query($con, $quereport)) {
+            echo "asd";
+        } else {
+            echo "sa>";
+        }
+
         $name = $_POST['nameinput'];
         $date = $_POST['dateinput'];
         $report = $_POST['report'];
         $aid = $_POST['aid'];
         $quereport = "UPDATE appointment set report = '$report' where a_id='$aid'";
-        if (mysqli_query($con, $quereport)) {
-            echo "<script>alert('Report Added successfully');</script>";
-        } else {
-            echo "<script>alert('Failed to add report / Report already exists');</script>";
-        }
+        if (mysqli_query($con, $quereport)) { } else { }
     }
 
     if (mysqli_num_rows($query)) {
@@ -127,11 +138,11 @@ if (isset($_POST['add'])) {
     } ?>
 </table>
 <br>
-<form name="rep" method="post">
+<form name="rep" method="post" enctype="multipart/form-data">
     <p>
         <label for="aid">Enter Appointment Id :</label>
         <input type="number" name="aid" id="aid"><br>
     </p>
-    <textarea name="report" id="report" cols="30" rows="5"></textarea>
+    <input name="report" id="report" type="file" placeholder="select report">
     <button class="btn btn-success" name="rep" id="rep">Add Report</button>
 </form>

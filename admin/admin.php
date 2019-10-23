@@ -10,10 +10,10 @@ if (isset($_POST['add'])) {
     $quereport = "INSERT INTO appointment (report) VALUES('$result')";
     if (mysqli_query($con, $quereport)) {
         echo "<script>alert('Report Added successfully');</script>";
-        } else {
+    } else {
         echo "<script>alert('Failed to add report');</script>";
-        }
-} 
+    }
+}
 ?>
 <div class="container mt-3">
     <div class="row">
@@ -21,7 +21,7 @@ if (isset($_POST['add'])) {
             <h1>ADMIN DASHBOARD</h1>
         </div>
         <div class="col-2">
-            <button class="btn btn-primary">LOGOUT</button>
+            <a href="/wdl_project/index.php"><button class="btn btn-primary">LOGOUT</button></a>
         </div>
     </div>
 
@@ -75,14 +75,27 @@ if (isset($_POST['add'])) {
 
     //$sql = "SELECT * FROM appointment";
     $sql = "SELECT * FROM appointment WHERE name='$name' AND date='$date'";
+    if (empty($_POST['nameinput'])) {
+        $sql = "SELECT * FROM appointment WHERE date='$date'";
+        echo "first";
+    }
+
+
+    if (empty($_POST['dateinput'])) {
+        $sql = "SELECT * FROM appointment WHERE name='$name'";
+        echo "second";
+    }
+
+    echo "after";
+
 
     // Perform queries
     if ($con) {
         $query = mysqli_query($con, $sql);
-        echo "db connection successful";  
+        echo "db connection successful";
     } else {
         echo "dberror";
-    } 
+    }
     if (isset($_POST['rep'])) {
         $name = $_POST['nameinput'];
         $date = $_POST['dateinput'];
@@ -94,7 +107,7 @@ if (isset($_POST['add'])) {
         } else {
             echo "<script>alert('Failed to add report / Report already exists');</script>";
         }
-    } 
+    }
 
     if (mysqli_num_rows($query)) {
         foreach ($query as $result) {    ?>
@@ -115,9 +128,9 @@ if (isset($_POST['add'])) {
 </table>
 <br>
 <form name="rep" method="post">
-    <p>    
-        <label for="aid">Enter Appointment Id :</label>  
-        <input type="number" name="aid" id="aid"><br>                
+    <p>
+        <label for="aid">Enter Appointment Id :</label>
+        <input type="number" name="aid" id="aid"><br>
     </p>
     <textarea name="report" id="report" cols="30" rows="5"></textarea>
     <button class="btn btn-success" name="rep" id="rep">Add Report</button>

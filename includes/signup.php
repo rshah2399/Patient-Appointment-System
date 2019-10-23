@@ -30,7 +30,7 @@ if (isset($_POST['register'])) {
             <label data-error="wrong" data-success="right" for="orangeForm-name" required>Your name</label>
           </div>
           <div class="md-form mb-3">
-            <input type="text" pattern="[789][0-9]{9}" id="orangeForm-text" class="form-control validate" name="mobile" required="">
+            <input type="text" title="Enter valid mobile number" pattern="[789][0-9]{9}" id="orangeForm-text" class="form-control validate" name="mobile" required="">
             <label data-error="wrong" data-success="right" for="orangeForm-text">Your Mobile Number</label>
           </div>
           <div class="md-form mb-3">

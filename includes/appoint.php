@@ -33,7 +33,7 @@ if (isset($_POST['appoint'])) {
           </div>
           <div class="form-group mb-3">
             <label data-error="wrong" data-success="right" for="orangeForm-text">Mobile Number: </label>
-            <input type="text" id="orangeForm-text" class="form-control validate" pattern="[789][0-9]{9}" name="mobile" required="">
+            <input type="text" id="orangeForm-text" class="form-control validate" title="Enter valid mobile number" pattern="[789][0-9]{9}" name="mobile" required="">
           </div>
           <div class="form-check mb-3">
             <label data-error="wrong" data-success="right" for="orangeForm-gender">Gender: </label>

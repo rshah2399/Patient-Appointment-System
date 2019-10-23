@@ -33,6 +33,9 @@ include 'includes/appoint.php';
                 <li class="nav-item">
                     <a href="#three" class="nav-link"><strong>Contact Us</strong></a>
                 </li>
+                <li class="nav-item">
+                    <a href="http://localhost/wdl_project/admin/admin.php" class="nav-link"><strong>Admin</strong></a>
+                </li>
             </ul>
             <ul class="container navbar-nav justify-content-end">
                 <?php
@@ -43,7 +46,7 @@ include 'includes/appoint.php';
                 } */
                 //echo "after admin";
                 if ($_SESSION['login']) { ?>
-                    <li><a class="book-hist" href="book-history.php">My Booking History</a></li>
+                    <li><a class="book-his" href="book-history.php">My Booking History</a></li>
                     <li><strong>Welcome :</strong></li>
                     <li class="sig">
                         <?php echo htmlentities($_SESSION['login']); ?>

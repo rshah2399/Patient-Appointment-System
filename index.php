@@ -3,207 +3,126 @@ include 'includes/links.php';
 include 'includes/signin.php';
 include 'includes/signup.php';
 include 'includes/appoint.php';
+session_start();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <title>Patient Appointment System</title>
+    <title>HealthCare - Patient Portal</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1f2937;
+            color: #e5e7eb;
+        }
+        .hover-scale {
+            transition: transform 0.3s ease;
+        }
+        .hover-scale:hover {
+            transform: scale(1.05);
+        }
+        .navbar-link:hover {
+            color: #a5b4fc;
+        }
+        .btn-primary {
+            background-color: #4f46e5;
+            transition: background-color 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #6366f1;
+        }
+        .feature-card {
+            border: 1px solid #4f46e5; /* Indigo border for cards */
+        }
+    </style>
 </head>
-
 <body>
-
-    <nav class="navbar navbar-dark navbar-expand-md py-0 fixed-top" id="mainNavbar">
-        <a href="#" class="navbar-brand"><i class="fas fa-user-md"></i><strong> HealthCare</strong></a>
-        <button class="navbar-toggler" data-toggle="collapse" data-target="#navLinks" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navLinks">
-            <ul class="container navbar-nav">
-                <li class="nav-item">
-                    <a href="#one" class="nav-link"><strong>Home</strong></a>
-                </li>
-                <li class="nav-item">
-                    <a href="#two" class="nav-link"><strong>About Us</strong></a>
-                </li>
-                <li class="nav-item">
-                    <a href="#three" class="nav-link"><strong>Contact Us</strong></a>
-                </li>
-                <li class="nav-item">
-                    <a href="http://localhost/wdl_project/admin/admin.php" class="nav-link"><strong>Admin</strong></a>
-                </li>
-            </ul>
-            <ul class="container navbar-nav justify-content-end">
-                <?php
-                session_start();
-                /* if ($_SESSION['type'] == "admin") {
-                    echo "admin";
-                    echo "<li class='prnt'><a href='/wdl_project/admin/admin.php'>Admin</a></li>";
-                } */
-                //echo "after admin";
-                if ($_SESSION['login']) { ?>
-                    <li><a class="book-his" href="book-history.php">My Booking History</a></li>
-                    <li><strong>Welcome :</strong></li>
-                    <li class="sig">
-                        <?php echo htmlentities($_SESSION['login']); ?>
-                    </li>
-                    <li class="sigi nav-item">
-                        <a href="logout.php" class="nav-link"><strong>/ Logout</strong></a>
-                    </li>
-                    <div class="clearfix"></div>
+    <!-- Navigation -->
+    <nav class="bg-gray-900 shadow-lg fixed w-full z-10">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-indigo-400">HealthCare</a>
+            <div class="space-x-6 flex items-center">
+                <a href="#home" class="text-gray-300 navbar-link">Home</a>
+                <a href="#about" class="text-gray-300 navbar-link">About</a>
+                <a href="#contact" class="text-gray-300 navbar-link">Contact</a>
+                <!-- <a href="/admin/admin.php" class="text-gray-300 navbar-link">Admin</a> -->
+                
+                <?php if ($_SESSION['login']) { ?>
+                    <a href="book-history.php" class="text-indigo-400 hover:text-indigo-300">My Bookings</a>
+                    <span class="text-gray-400">Welcome, <?php echo htmlentities($_SESSION['login']); ?></span>
+                    <a href="logout.php" class="text-red-400 hover:text-red-300">Logout</a>
                 <?php } else { ?>
-                    <li class="sig nav-item">
-                        <a href="#" class="nav-link" data-toggle="modal" data-target="#modalRegisterForm"><strong>Sign Up </strong></a>
-                    </li>
-                    <li class="sigi nav-item">
-                        <a href="#" class="nav-link" data-toggle="modal" data-target="#modalRegisterForm2"><strong>/ Sign In</strong></a>
-                    </li>
-                    <div class="clearfix"></div>
+                    <button class="text-indigo-400 hover:text-indigo-300" data-toggle="modal" data-target="#modalRegisterForm">Sign Up</button>
+                    <button class="btn-primary text-white px-4 py-2 rounded-lg" data-toggle="modal" data-target="#modalRegisterForm2">Sign In</button>
                 <?php } ?>
-
-            </ul>
+            </div>
         </div>
     </nav>
-    <div class="container-fluid px-0">
-        <div class="row align-items-center">
-            <div class="col text-center">
-                <img src="img/904.jpg" alt="" style="width:100%">
-                <div class="bottom-right">
-                    <h2 style="color: brown"><i class="fas fa-quote-left"></i> WE CARE ABOUT YOUR HEALTH <i class="fas fa-quote-right"></i></h2>
-                    <button type="button" class="btn btn-outline-success" style="color:#595959">
-                        <a href="#" data-toggle="modal" data-target="#modalRegisterForm3"><strong>Book Appointment</strong></a>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <section class="container-fluid px-0">
-        <hr class="pg-end">
-        <p>
-            <h1 id="one" class="d-none d-lg-block mt-5 text-center">Home</h1>
-        </p>
-        <hr>
-        <div class="row align-items-center">
-            <div class="col-md-6 text-center">
-                <div class="row justify-content-center">
-                    <div class="col-10 col-lg-8 blurb mb-5 mb-md-0 ">
-                        <h2>Allow patients to book online seamlessly</h2>
-                        <p class="lead">Give patients the opportunity to book an appointment on your website and sync the online portal with your EMR, reducing double booking. Manage and customize each physician availabilities on all booking channels.</p>
-                    </div>
-                </div>
+    <!-- Hero Section -->
+    <section class="pt-24 pb-16 bg-gradient-to-r from-gray-800 to-indigo-900">
+        <div class="max-w-7xl mx-auto px-4 flex items-center justify-between">
+            <div class="w-1/2 pr-8">
+                <h1 class="text-4xl font-bold text-white mb-4">We Care About Your Health</h1>
+                <p class="text-lg text-gray-300 mb-6">Book appointments easily and manage your healthcare needs with our modern platform.</p>
+                <button class="btn-primary text-white px-6 py-3 rounded-lg font-semibold" data-toggle="modal" data-target="#modalRegisterForm3">Book Appointment</button>
             </div>
-            <div class="col-md-6 content">
-                <!-- <img src="img/moc3.jfif" alt="" class="img-fluid">             -->
+            <div class="w-1/2 flex justify-end mt-10">
+                <img src="img/904.jpg" alt="Healthcare" class="rounded-lg shadow-lg hover-scale w-3/4">
             </div>
-        </div>
-        <hr>
-        <div class="row align-items-center">
-            <div class="col-md-6 order-2 order-md-1 content">
-                <!-- <img src="img/moc1.jfif" alt="" class="img-fluid">             -->
-            </div>
-            <div class="col-md-6 text-center order-1 order-md-2">
-                <div class="row justify-content-center">
-                    <div class="col-10 col-lg-8 blurb mb-5 mb-md-0">
-                        <h2>Simplify patient arrival and decrease reception workload</h2>
-                        <p class="lead">Allow patients to quickly and autonomously let you know they’ve arrived with self-service check-in kiosks. Modules synchronize with your EMR, reduce lines at reception, and free up staff’s time.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <hr>
-        <div class="row align-items-center">
-            <div class="col-md-6 text-center">
-                <div class="row justify-content-center">
-                    <div class="col-10 col-lg-8 blurb mb-5 mb-md-0">
-                        <h2>Optimize your organization’s performance and provide a better patient experience.</h2>
-                        <p class="lead">HealthCare gives administration more time for patients and gives patients improved healthcare access. Plus, it avoids training costs for new employees with task automation and EMR integration</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 content">
-                <!-- <img src="img/moc3.jfif" alt="" class="img-fluid">             -->
-            </div>
-        </div>
-    </section>
-    <section class="container-fluid px-0">
-        <hr class="pg-end">
-        <p>
-            <h1 id="two" class="d-none d-lg-block mt-5 text-center">About Us</h1>
-        </p>
-        <hr>
-        <div class="row align-items-center">
-            <div class="col-md-6 text-center">
-                <div class="row justify-content-center">
-                    <div class="col-10 col-lg-8 blurb mb-5 mb-md-0 ">
-                        <h2>Allow patients to book online seamlessly</h2>
-                        <p class="lead">Give patients the opportunity to book an appointment on your website and sync the online portal with your EMR, reducing double booking. Manage and customize each physician availabilities on all booking channels.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 content">
-                <img src="img/book.png" class="im" alt="" height="500px" width="500px" class="img-fluid">
-            </div>
-        </div>
-        <hr>
-        <div class="row align-items-center">
-            <div class="col-md-6 order-2 order-md-1 content">
-                <img src="img/recp.png" class="im" alt="" height="500px" width="500px" class="img-fluid">
-            </div>
-            <div class="col-md-6 text-center order-1 order-md-2">
-                <div class="row justify-content-center">
-                    <div class="col-10 col-lg-8 blurb mb-5 mb-md-0">
-                        <h2>Simplify patient arrival and decrease reception workload</h2>
-                        <p class="lead">Allow patients to quickly and autonomously let you know they’ve arrived with self-service check-in kiosks. Modules synchronize with your EMR, reduce lines at reception, and free up staff’s time.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <hr>
-        <div class="row align-items-center">
-            <div class="col-md-6 text-center">
-                <div class="row justify-content-center">
-                    <div class="col-10 col-lg-8 blurb mb-5 mb-md-0">
-                        <h2>Optimize your organization’s performance and provide a better patient experience.</h2>
-                        <p class="lead">HealthCare gives administration more time for patients and gives patients improved healthcare access. Plus, it avoids training costs for new employees with task automation and EMR integration</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 content">
-                <img src="img/better.jpg" class="im" alt="" height="500px" width="500px" class="img-fluid">
-            </div>
-        </div>
-    </section>
-    <section class="container-fluid px-0">
-        <hr class="pg-end">
-        <p>
-            <h1 id="three" class="d-none d-lg-block mt-5 text-center">Contact Us</h1>
-        </p>
-        <hr>
-        <div class="text-center blurb">
-            <h2>Toll Free Number : </h2>
-            <p class="lead">123-456789</p>
-            <hr>
-            <h2>Clinic Address: </h2>
-            <p class="lead">Flat No.103, 1st Floor, B,</p>
-            <p class="lead">Raj Niketan Building,</p>
-            <p class="lead">SV Rd, Santacruz West,</p>
-            <p class="lead">Mumbai, Maharashtra 400054</p>
         </div>
     </section>
 
-    <script>
-        $(function() {
-            $(document).scroll(function() {
-                var $nav = $("#mainNavbar");
-                $nav.toggleClass("scrolled", $(this).scrollTop() > $nav.height());
-            });
-        });
-    </script>
+    <!-- Features Section -->
+    <section id="home" class="py-16">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gray-800 p-6 rounded-lg shadow-md hover-scale feature-card">
+                    <h2 class="text-xl font-semibold text-indigo-400 mb-2">Seamless Booking</h2>
+                    <p class="text-gray-300">Book appointments online with real-time syncing to avoid double bookings.</p>
+                </div>
+                <div class="bg-gray-800 p-6 rounded-lg shadow-md hover-scale feature-card">
+                    <h2 class="text-xl font-semibold text-indigo-400 mb-2">Easy Check-in</h2>
+                    <p class="text-gray-300">Self-service check-in kiosks to reduce reception workload.</p>
+                </div>
+                <div class="bg-gray-800 p-6 rounded-lg shadow-md hover-scale feature-card">
+                    <h2 class="text-xl font-semibold text-indigo-400 mb-2">Better Experience</h2>
+                    <p class="text-gray-300">Optimized performance and improved healthcare access for all.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4">
+            <h1 class="text-3xl font-bold text-center text-white mb-12">About Us</h1>
+            <div class="flex flex-col md:flex-row items-center gap-8">
+                <img src="img/book.png" alt="Booking" class="w-1/2 rounded-lg shadow-md hover-scale">
+                <div>
+                    <h2 class="text-2xl font-semibold text-indigo-400 mb-4">Our Mission</h2>
+                    <p class="text-gray-300">We aim to simplify healthcare access by providing a seamless booking experience and efficient patient management tools.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h1 class="text-3xl font-bold text-white mb-8">Contact Us</h1>
+            <p class="text-lg text-gray-300 mb-2">Toll Free: 123-456789</p>
+            <p class="text-lg text-gray-300">Lorem ipsum</p>
+        </div>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
-
 </html>

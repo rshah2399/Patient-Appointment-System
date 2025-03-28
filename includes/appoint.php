@@ -4,107 +4,89 @@ error_reporting(0);
 include 'config.php';
 
 if (isset($_POST['appoint'])) {
-  $name = $_POST['name'];
-  $mobile = $_POST['mobile'];
-  $gender = $_POST['gender'];
-  $email = $_POST['email'];
-  $date = $_POST['sdate'];
-  $time = $_POST['stime'];
+    $name = $_POST['name'];
+    $mobile = $_POST['mobile'];
+    $gender = $_POST['gender'];
+    $email = $_POST['email'];
+    $date = $_POST['sdate'];
+    $time = $_POST['stime'];
 
-  $query = "INSERT INTO appointment (name, phone, gender, email, date, time) VALUES('$name', '$mobile','$gender', '$email', '$date', '$time')";
-  if (mysqli_query($con, $query)) {
-    echo "<script>alert('Appointment Booked successfully');</script>";
-  } else {
-    echo "<script>alert('Failed to book');</script>";
-  }
+    $query = "INSERT INTO appointment (name, phone, gender, email, date, time) VALUES('$name', '$mobile','$gender', '$email', '$date', '$time')";
+    if (mysqli_query($con, $query)) {
+        echo "<script>alert('Appointment Booked successfully');</script>";
+    } else {
+        echo "<script>alert('Failed to book');</script>";
+    }
 }
 ?>
-<div class="modal fade" id="modalRegisterForm3" tabindex="-2" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Book An Appointment</h4>
-      </div>
-      <form name="appoint" method="post">
-        <div class="modal-body mx-3">
-          <div class="form-group mb-3">
-            <label data-error="wrong" data-success="right" for="orangeForm-name" required>Full Name: </label>
-            <input type="text" id="orangeForm-name" class="form-control validate" name="name" required="">
-          </div>
-          <div class="form-group mb-3">
-            <label data-error="wrong" data-success="right" for="orangeForm-text">Mobile Number: </label>
-            <input type="text" id="orangeForm-text" class="form-control validate" title="Enter valid mobile number" pattern="[789][0-9]{9}" name="mobile" required="">
-          </div>
-          <div class="form-check mb-3">
-            <label data-error="wrong" data-success="right" for="orangeForm-gender">Gender: </label>
 
-            <div class="form-group" style="display: flex;">
-              <label for="orangeForm-gender" class="black">Male</label>
-              <input type="radio" id="orangeForm-gender" class="form-control d-inline-block validate" name="gender" value="male" checked>
+<div class="modal fade" id="modalRegisterForm3" tabindex="-2" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content bg-gray-800 text-gray-200">
+            <div class="modal-header bg-indigo-600 text-white">
+                <h4 class="modal-title w-100 font-bold">Book Appointment</h4>
             </div>
-            <div class="form-group" style="display: flex;">
-              <label for="orangeForm-gender" class="black">Female</label>
-              <input type="radio" id="orangeForm-gender" class="form-control validate" name="gender" value="female">
-            </div>
-            <div class="form-group" style="display: flex;">
-              <label for="orangeForm-gender" class="black">Other</label>
-              <input type="radio" id="orangeForm-gender" class="form-control validate" name="gender" value="others">
-            </div>
-          </div>
-          <div class="form-group mb-3">
-            <label data-error="wrong" data-success="right" for="orangeForm-email">Email Address: </label>
-            <input type="email" id="orangeForm-email" class="form-control validate" name="email" required="">
-          </div>
-          <div class="md-form mb-3">
-            <label data-error="wrong" data-success="right" for="orangeForm-date">Select Date: </label>
-            <input type="date" id="orangeForm-date" class="form-control validate" name="sdate" required="">
-          </div>
-          <div class="md-form mb-3">
-            <label data-error="wrong" data-success="right" for="orangeForm-time">Select Time: </label>
-            <select id="orangeForm-time" class="form-control validate" name="stime" required="">
-              <option value="9:00">9:00</option>
-              <option value="9:30">9:30</option>
-              <option value="10:00">10:00</option>
-              <option value="10:30">10:30</option>
-              <option value="11:00">11:00</option>
-              <option value="11:30">11:30</option>
-              <option value="12:00">12:00</option>
-              <option value="12:30">12:30</option>
-              <option value="13:00">13:00</option>
-              <option value="13:30">13:30</option>
-              <option value="14:00">14:00</option>
-              <option value="14:30">14:30</option>
-            </select>
-          </div>
-          <div style:color="red">
-            *All fields are mandatory
-          </div>
+            <form name="appoint" method="post" class="p-6">
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-gray-300">Full Name</label>
+                        <input type="text" name="name" class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
+                    </div>
+                    <div>
+                        <label class="block text-gray-300">Mobile Number</label>
+                        <input type="text" name="mobile" pattern="[789][0-9]{9}" class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
+                    </div>
+                    <div>
+                        <label class="block text-gray-300">Gender</label>
+                        <div class="flex space-x-4">
+                            <label class="text-gray-300"><input type="radio" name="gender" value="male" checked class="text-indigo-500"> Male</label>
+                            <label class="text-gray-300"><input type="radio" name="gender" value="female" class="text-indigo-500"> Female</label>
+                            <label class="text-gray-300"><input type="radio" name="gender" value="others" class="text-indigo-500"> Other</label>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-gray-300">Email Address</label>
+                        <input type="email" name="email" class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
+                    </div>
+                    <div>
+                        <label class="block text-gray-300">Select Date</label>
+                        <input type="date" name="sdate" class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
+                    </div>
+                    <div>
+                        <label class="block text-gray-300">Select Time</label>
+                        <select name="stime" class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
+                            <option value="9:00">9:00</option>
+                            <option value="9:30">9:30</option>
+                            <option value="10:00">10:00</option>
+                            <option value="10:30">10:30</option>
+                            <option value="11:00">11:00</option>
+                            <option value="11:30">11:30</option>
+                            <option value="12:00">12:00</option>
+                            <option value="12:30">12:30</option>
+                            <option value="13:00">13:00</option>
+                            <option value="13:30">13:30</option>
+                            <option value="14:00">14:00</option>
+                            <option value="14:30">14:30</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="mt-6">
+                    <input type="submit" name="appoint" value="Book Now" class="w-full bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-500">
+                </div>
+            </form>
         </div>
-        <div class="modal-footer d-flex justify-content-center">
-          <input type="submit" name="appoint" id="appoint" class="btn btn-dark" value="BOOK NOW">
-        </div>
-      </form>
     </div>
-  </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 <script>
-  $(function() {
+$(function() {
     var dtToday = new Date();
-
     var month = dtToday.getMonth() + 1;
     var day = dtToday.getDate();
     var year = dtToday.getFullYear();
-    if (month < 10)
-      month = '0' + month.toString();
-    if (day < 10)
-      day = '0' + day.toString();
-
+    if (month < 10) month = '0' + month.toString();
+    if (day < 10) day = '0' + day.toString();
     var minDate = year + '-' + month + '-' + day;
-
-    $('#orangeForm-date').attr('min', minDate);
-  });
+    $('input[name="sdate"]').attr('min', minDate);
+});
 </script>

@@ -2,50 +2,49 @@
 error_reporting(0);
 include 'config.php';
 if (isset($_POST['register'])) {
+    $username = $_POST['name'];
+    $mobile = $_POST['mobile'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
 
-  $username = $_POST['name'];
-  $mobile = $_POST['mobile'];
-  $email = $_POST['email'];
-  $password = $_POST['password'];
-
-  $sql = "INSERT INTO users (name, phone, email, password) VALUES('$username', '$mobile', '$email', '$password')";
-  if (mysqli_query($con, $sql)) {
-    echo "<script>alert('Registration done successfully');</script>";
-  } else {
-    echo "<script>alert('Already an account with same details');</script>";
-  }
+    $sql = "INSERT INTO users (name, phone, email, password) VALUES('$username', '$mobile', '$email', '$password')";
+    if (mysqli_query($con, $sql)) {
+        echo "<script>alert('Registration done successfully');</script>";
+    } else {
+        echo "<script>alert('Already an account with same details');</script>";
+    }
 }
 ?>
 
 <div class="modal fade" id="modalRegisterForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Sign up</h4>
-      </div>
-      <form id="signupform" name="signup" method="post">
-        <div class="modal-body mx-3">
-          <div class="md-form mb-3">
-            <input type="text" id="orangeForm-name" class="form-control validate" name="name" required="">
-            <label data-error="wrong" data-success="right" for="orangeForm-name" required>Your name</label>
-          </div>
-          <div class="md-form mb-3">
-            <input type="text" title="Enter valid mobile number" pattern="[789][0-9]{9}" id="orangeForm-text" class="form-control validate" name="mobile" required="">
-            <label data-error="wrong" data-success="right" for="orangeForm-text">Your Mobile Number</label>
-          </div>
-          <div class="md-form mb-3">
-            <input type="email" id="orangeForm-email" class="form-control validate" name="email" required="">
-            <label data-error="wrong" data-success="right" for="orangeForm-email">Your email</label>
-          </div>
-          <div class="md-form mb-3">
-            <input type="password" id="orangeForm-pass" class="form-control validate" name="password" required="">
-            <label data-error="wrong" data-success="right" for="orangeForm-pass">Your password</label>
-          </div>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content bg-gray-800 text-gray-200">
+            <div class="modal-header bg-indigo-600 text-white">
+                <h4 class="modal-title w-100 font-bold">Sign Up</h4>
+            </div>
+            <form id="signupform" name="signup" method="post" class="p-6">
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-gray-300">Your Name</label>
+                        <input type="text" name="name" class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
+                    </div>
+                    <div>
+                        <label class="block text-gray-300">Mobile Number</label>
+                        <input type="text" name="mobile" pattern="[789][0-9]{9}" class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
+                    </div>
+                    <div>
+                        <label class="block text-gray-300">Email Address</label>
+                        <input type="email" name="email" class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
+                    </div>
+                    <div>
+                        <label class="block text-gray-300">Password</label>
+                        <input type="password" name="password" class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
+                    </div>
+                </div>
+                <div class="mt-6">
+                    <input type="submit" name="register" value="Create Account" class="w-full bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-500">
+                </div>
+            </form>
         </div>
-        <div class="modal-footer d-flex justify-content-center">
-          <input type="submit" name="register" id="register" class="btn btn-dark" value="CREATE ACCOUNT">
-        </div>
-      </form>
     </div>
-  </div>
 </div>
